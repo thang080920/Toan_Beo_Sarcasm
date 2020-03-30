@@ -25,11 +25,14 @@ file = open('./data.json', encoding="utf8")
 data = json.load(file)
 
 keywords = []
+normal_list = []
+
+# keyword list insertion
 
 for index in data['keys']:
     keywords.append(index['text'])
 
-normal_list = []
+# normal list insertion
 
 for index in data['normal']:
     normal_list.append(index['text'])
@@ -40,25 +43,16 @@ file.close()
 
 @bot.event
 async def on_ready():
-    # for guild in client.guilds:
-    #     if guild.name == GUILD:
-    #         break
     print(
         f'{bot.user.name} has connected to Discord!\n'
-        # f'Entered {guild.name}'
         )
 
 
 
 @bot.event
 async def on_message(message):
-
-
-
     if message.author == client.user:
         return
-
-    
     if message.content in keywords:
         response = random.choice(normal_list)
         output = f'{response} %s' %ID
