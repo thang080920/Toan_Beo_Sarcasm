@@ -60,7 +60,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content in keywords:
-        if message.content == '^jar...t':
+        if message.content == '^.jar...t.':
             response = random.choice(jarjeet)
         else:
             response = random.choice(normal_list)
