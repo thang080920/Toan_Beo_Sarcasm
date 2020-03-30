@@ -26,6 +26,7 @@ data = json.load(file)
 
 keywords = []
 normal_list = []
+jarjeet = []
 
 # keyword list insertion
 
@@ -36,6 +37,11 @@ for index in data['keys']:
 
 for index in data['normal']:
     normal_list.append(index['text'])
+
+# jarjeet list insertion
+
+for index in data['jarjeet']:
+    jarjeet.append(index['text'])
 
 file.close()
 
@@ -54,7 +60,10 @@ async def on_message(message):
     if message.author == client.user:
         return
     if message.content in keywords:
-        response = random.choice(normal_list)
+        if message.content == '^jar...t':
+            response = random.choice(jarjeet)
+        else:
+            response = random.choice(normal_list)
         output = f'{response} %s' %ID
         await message.channel.send(output)
 
